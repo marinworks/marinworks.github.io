@@ -1,0 +1,64 @@
+Mojinora 利用条件
+Copyright (c) 2026 Mojinora
+
+1. 利用の許可
+Mojinoraが配布する本アプリを、個人・法人、商用・非商用を問わず無料で利用できます。
+自身または所属組織で利用する端末へのインストールと、そのための複製・バックアップを認めます。
+利用者が作成した文書・画像その他のデータの権利は、本条件によって変更されません。
+
+2. 第三者への再配布
+第三者向けの配布サイトへの掲載、ミラー配信、販売、他製品への同梱など、
+本アプリの第三者への再配布には、配布者Mojinoraの事前の許可が必要です。
+許可を得ていない場合は、インストーラーを再配布せず、入手元のページを案内してください。
+
+3. ソースコードと権利
+本アプリ固有のソースコードは公開していません。本条件で明示した範囲以外の
+改変・再配布等の権利を付与するものではありません。ただし、適用法令により
+認められる権利を制限するものではありません。
+
+4. 第三者製ソフトウェア
+本アプリに含まれる第三者製ソフトウェア・フォント等には、各権利者のライセンスが
+適用されます。それらについては本条件の制限より各ライセンスが優先します。
+同梱のTHIRD-PARTY-NOTICES.txt、LICENSE.electron.txt、LICENSES.chromium.htmlを参照してください。
+
+5. 提供条件
+本アプリは現状のまま提供します。特定の用途への適合、動作の完全性、継続的な更新や
+個別サポートを保証するものではありません。重要な文書はバックアップしてください。
+適用法令によって認められる範囲で、配布者は本アプリの利用により生じた損害について
+責任を負いません。法令上免除・制限できない責任には、この規定を適用しません。
+
+配布者: Mojinora
+制定: 2026-10-05
+
+-----------------------------------------------------------------------
+Mojinora Terms of Use (English translation)
+Copyright (c) 2026 Mojinora
+
+1. You may use the app distributed by Mojinora free of charge for personal
+or commercial purposes, individually or within an organization. Installation,
+copying for that use, and backup copies are permitted. These terms do not
+change your rights in documents, images, or other data that you create.
+
+2. Redistribution to third parties, including mirrors, download sites,
+resale, and bundling with other products, requires prior permission from
+Mojinora. Without permission, direct others to the original download page
+instead of redistributing the installer.
+
+3. The app's own source code is not published. These terms grant no rights
+to modification or redistribution beyond those expressly stated. Rights
+granted by applicable law are not restricted by these terms.
+
+4. Third-party software and fonts remain subject to their own licenses,
+which take precedence over restrictions in these terms for those components.
+See THIRD-PARTY-NOTICES.txt, LICENSE.electron.txt, and LICENSES.chromium.html.
+
+5. The app is provided as is, without guarantees of fitness for a particular
+purpose, error-free operation, continued updates, or individual support.
+Keep backups of important documents. To the extent permitted by applicable
+law, the publisher is not liable for damages arising from use of the app.
+This limitation does not apply to liability that cannot legally be excluded
+or limited.
+
+Publisher: Mojinora
+Effective date: 2026-10-05
+The Japanese text is the original; this English text is a translation.

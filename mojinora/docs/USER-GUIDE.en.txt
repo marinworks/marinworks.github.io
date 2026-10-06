@@ -1,0 +1,202 @@
+Mojinora 1.0.0 User Guide
+
+System requirements and installation
+Windows 11 / x64. No development tools, such as Node.js, are required.
+The installer includes the required runtime files and works offline.
+Installation is for the current Windows user and requires no administrator privileges.
+
+1. Run the installer and select a language.
+2. Review the terms of use and choose the installation folder.
+3. Choose a desktop shortcut and the Open with Mojinora context-menu entry.
+4. On File associations, select groups or individual extensions.
+5. Optionally select Open Windows default-app settings on the final page.
+   Choose the formats you want to open by default in the settings page.
+6. Launch Mojinora from the Start menu.
+
+File context menu and associations
+Open with Mojinora works with files of any extension, including extensionless files, but not folders.
+On Windows 11, it appears under Show more options in the file context menu.
+Multiple documents open as tabs in the existing window. Reopening a file preserves its unsaved edits.
+Unsupported files and folders produce an explanation while other documents continue to open.
+Associations register Open with and default-app candidates only. Setup never changes current default apps.
+Fresh installations select Markdown (.md / .markdown / .mdown / .mkd) and text/logs (.txt / .text / .log).
+Configuration/data and source-code groups are also available. Choose a whole group or individual extensions; partial groups show a mixed state.
+Enter custom extensions separated by commas, semicolons or spaces and click Add, for example .abc; txt.
+A leading dot is added, case is normalized and duplicates are removed. A suffix must be 1–63 characters excluding the dot.
+Paths, wildcards, extra dots, control characters and known unsupported file types are rejected.
+An excessively long list produces an error; reduce the number of custom extensions and retry.
+Context-menu and extension choices are retained on the next in-place installation.
+Deselecting an extension removes its candidate entry without changing the selected default app. Choose a different default in Windows Settings if needed.
+Uninstalling removes only Mojinora registrations, leaving other apps and user documents unchanged.
+
+Silent installation (no administrator privileges)
+Mojinora-Setup-1.0.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
+/CONTEXTMENU=0 or 1 controls the context-menu entry.
+/ASSOCIATIONS=1 selects only .md / .markdown; 0 selects none.
+An explicit /EXTENSIONS list takes precedence. /EXTENSIONS="" selects none. Invalid values exit without changing registration.
+Silent installation never opens default-app settings.
+
+Language
+For a new installation, the app uses the first preferred system language:
+Japanese when it is Japanese, and English otherwise.
+In Settings > General > Language, choose Use system setting, 日本語, or English.
+Save settings and restart the app to apply a language change.
+Existing language preferences are preserved when updating.
+Your document content and file names are not translated.
+
+Updates
+Save your work, close Mojinora, and run the new installer.
+Use the existing installation folder. Uninstalling first is not necessary.
+Documents, images, settings, and recovery data are preserved. Updates are manual.
+
+Files on network drives
+When native change notifications are unavailable, the app automatically checks
+for changes approximately once a second. External changes, deletion, and recreation
+are detected; the response time depends on the connection.
+If you have unsaved edits, external changes prompt a choice instead of overwriting your work.
+
+Editing
+New tabs use plain text. Click the file type at the bottom right to switch to Markdown (formatted) or Markdown (source).
+Change the default under Settings > General > Text editing > Default document type.
+Files ending in .md, .markdown, .mdown, or .mkd open as Markdown; other text files use text editing.
+Ctrl+S saves and Ctrl+Z undoes. Keyboard shortcuts can be changed in Settings.
+
+Exiting and restoring your session
+When closing the app with unsaved documents, one dialog lists the affected documents.
+Save all and exit saves each document, asking for a location for untitled documents.
+Keep session and exit leaves the original files unchanged, records the open tabs and unsaved content in the recovery area, and restores them automatically at the next start.
+Discard changes and exit does not retain unsaved edits. Cancel, a cancelled save, or a failed session write leaves the app open.
+The session includes tab order and the active tab, text, Undo/Redo history (up to 201 states), encoding/BOM/line endings, selections and scrolling, editing/preview modes, document-specific indentation and syntax, bookmarks, folds, split panes, and the sidebar folder and expanded nodes. Managed images needed by the history are retained too.
+Large logs are reopened at their recorded position, encoding and follow setting; the entire file is not copied. An unavailable log shows a Retry button in its tab.
+File > Restore last closed session replaces the current tabs after confirmation. Unsaved documents also prompt you to save or discard. Cancelling midway leaves all tabs open.
+Other exit choices start with an empty document next time. The manual checkpoint excludes discarded untitled documents and discarded edits and history.
+The next normal exit replaces the checkpoint. Automatic restoration happens once; the checkpoint remains available for manual restoration.
+For ordinary documents, recorded text and history take precedence over files changed or deleted externally. Review the notification before loading the external version, overwriting, or using Save As.
+Search results, comparison views, dialogs, running macros and export operations are not restored. Settings export does not include the session.
+
+Markdown preview
+Select the eye icon, Preview, in the Markdown toolbar to read the unsaved document.
+Back to editing or Escape restores the previous formatted/source editor, selection, Undo history and scroll position.
+Preview state and reading position are kept per tab until it closes. Find, Replace and file-type changes return to editing.
+Select and copy text, follow links, and navigate the table of contents and footnotes. Raw HTML is shown as text, never executed.
+Unavailable images or formulas display an explanation while the rest of the document remains readable. Remote image permissions still apply.
+
+Settings backup
+Settings > Backup > Export writes all saved preferences and shortcuts to JSON, named Mojinora-settings.json by default.
+Unsaved changes in the settings dialog are not exported. Import loads a draft; Save Settings applies it and Cancel discards it.
+Invalid files, unsupported fields, invalid values and shortcut conflicts leave both current settings and the draft unchanged.
+Documents, recovery data, saved macros and temporary per-document preferences are excluded. Language changes take effect after restarting.
+
+Text editing
+Click a line number to select the whole line, including its newline. A final line without a newline selects only its text.
+Drag up or down across line numbers to select multiple lines. Wrapped text counts as one logical line; dragging beyond the viewport scrolls the editor.
+The same operations work in Markdown source, code blocks, split panes, large logs and file comparison.
+Text editing, both split panes and the large log viewer use 3px margins on all sides.
+Undo and Redo at the top right target the active document, even while the search input is focused.
+They are disabled in preview, in the large log viewer, or when no relevant history exists.
+The icon toolbar contains Editing tools, Find, Replace, Go to line, Line wrapping, Split editor and Compare files.
+Editing tools is a flat menu for line operations, indenting, comments, folding and bookmarks.
+Sorting and deduplication affect selected logical lines, or the whole document without a selection. A selection ending at the next line start excludes that line.
+Sorting uses natural numeric order. Deduplication keeps the first exact match and preserves order and the final newline.
+Toggle Whitespace at the bottom right; the preference is retained after restart.
+
+Selected text conversions
+Select text and choose an operation from Editing tools. Conversion is disabled without a selection.
+- Lowercase / Uppercase
+- Full-width to half-width (hiragana stays unchanged)
+- Full-width letters/digits to half-width, or the reverse (letters and digits only)
+- Full-width katakana to half-width, or the reverse
+- Tabs to spaces / Spaces to tabs
+The three hiragana-related operations have been removed from the menu. Existing custom shortcuts and saved macros still work.
+Tab conversion uses the document tab size and the column before the selection. Mid-line space runs reaching a tab stop also convert to tabs; remaining spaces stay unchanged.
+Unmapped characters, circled numbers and kanji are preserved. Multiple and rectangular selections convert independently and remain selected afterwards.
+Line operations merge overlapping selected lines and process separate blocks independently. Each conversion is one Undo step.
+Conversions have no new default shortcuts. Assign keys in Settings > Shortcuts; existing custom keys are preserved.
+
+Syntax language is detected from the file name. Click the file type at the bottom right to search and change it. Fold code from the gutter.
+Changing file type preserves the file name, content, encoding, and Undo history. Manual choices last until the tab is closed.
+A thin line marks the current visual line. Disable it with Underline the current line in Settings.
+Click Spaces: 4 (or the current value) at the bottom right to choose tabs/spaces and a width from 1 to 16 for the current document. New documents use the defaults in Settings.
+Tab inserts a tab character or spaces to the next tab stop. With a selection it indents lines; Shift+Tab unindents.
+Alt-drag creates a rectangular selection. Ctrl+D adds the next matching occurrence to the selection.
+Ctrl+F2 toggles a bookmark; F4 / Shift+F4 moves between bookmarks. Bookmarks last until the tab is closed.
+Ctrl+G goes to a line. Settings include wrapping, whitespace, font, tab size, and space indentation.
+The default body font is Consolas at 14px. You can change it in Settings. Updates preserve your saved font preferences.
+Hold Ctrl and scroll up/down over the editor to increase/decrease text zoom (50–200%). Zoom is shared across tabs for the current run and does not change the saved font size. Ctrl+Shift+0 (Actual size) resets it to 100%. Each launch starts at 100%.
+Ctrl+F / Ctrl+H opens search / replacement with regex, whole-word, and selection-only options.
+Regex replacements support $1, $2, and $<name>. Searches stop after 3 seconds and show up to 10,000 results.
+
+Encoding and line endings
+Click the encoding indicator at the bottom right. Apply, then save the document.
+Supported encodings: UTF-8, UTF-16 LE/BE, CP932 (Shift_JIS), EUC-JP, and ISO-2022-JP.
+If automatic detection is incorrect, save unsaved changes first, then use Reopen with encoding.
+Saving stops without changing the original file if characters cannot be represented in the selected encoding.
+Choose LF, CRLF, or CR. Mixed line endings are preserved at unchanged locations unless explicitly converted.
+
+File drops and product information
+Drop one or more document files on the sidebar, tab bar, top bar, editor, or status bar to open them.
+Dropping images into a Markdown editor inserts them. For mixed drops, images are inserted into the original document before other documents open.
+Folders and unsupported files are reported without preventing other documents from opening.
+Help > About Mojinora displays the installed version.
+
+GREP search and replacement
+Use Ctrl+Shift+F for GREP search or Ctrl+Shift+H for GREP replacement.
+Enter a folder path or use Browse. The sidebar folder is not changed. Subfolder search is enabled by default.
+Separate include/exclude patterns with semicolons, for example *.txt;*.log or src/**/*.ts.
+Only saved files are included. Unsaved tabs, binary files, files over 50 MiB, symbolic links, and junctions are excluded.
+Results stay below the editor while you edit or switch tabs. Drag the panel edge to resize it; use its controls to edit conditions, search again, stop, or close.
+Click a result to navigate to the match. Search again if the file has changed since the search.
+Review Before and After, select files, and choose Replace selected files.
+Files changed externally since preview, and tabs with new unsaved changes, are skipped.
+There is no combined input size limit. Results are limited to 1,000 files / 10,000 matches. Cancelled or truncated results cannot be used for replacement. Initially 200 matches per file are displayed; Show more reveals the rest.
+Replacement is recalculated one file at a time, preserving encoding, BOM, and line endings. Unrepresentable characters or output exceeding 50 MiB prevent that file from being written.
+Original bytes are backed up in replace-backups under the settings folder. The result shows the backup location.
+Folder replacement cannot be undone using document Undo. To restore, close the affected tabs and copy the corresponding .bak files to the original paths listed in manifest.json.
+
+Split and compare
+In text editing, Ctrl+\ splits the same document into two views sharing edits and Undo history.
+Compare files shows another tab in a read-only comparison. Each document must be no larger than 10 MiB.
+
+Recorded macros
+Press F9 in text editing to start recording, perform typing and editing commands, and press F9 again to stop. F8 replays.
+Save macro and Manage macros provide named storage, playback, and deletion. Arbitrary scripts are not supported.
+Typing, newlines, character deletion, arrow-key movement, and line commands are recorded. File operations and mouse selections are not recorded.
+Playback is one Undo step. Use Stop playback or Escape to stop.
+Limits: 10,000 actions / 1 MiB per recording, 100,000 actions per playback, and 100 saved macros / 8 MiB total.
+
+Large logs
+Files over 50 MiB open read-only. Files over 1 GiB are loaded in sections instead of being held entirely in memory.
+Navigate using First, Last, Previous/Next page, or the position slider. Line numbers are relative to the displayed page.
+Follow appended content reloads the tail approximately every second, including truncation or replacement at the same path.
+Large files are excluded from editing, document search, folder search/replacement, comparison, and macros.
+Very long lines are shown in parts. Legacy Japanese encodings may require reading earlier bytes to determine character boundaries, making position changes slower.
+
+Markdown editing
+Switch between formatted editing (WYSIWYG) and direct Markdown source editing.
+Ctrl+S saves, Ctrl+Z undoes, Ctrl+1–6 applies headings, and Ctrl+0 applies body text.
+Ctrl+B applies bold, Ctrl+I applies italic, and Shift+Enter inserts a line break.
+Selecting text displays a small toolbar with the applicable formatting commands.
+Keyboard shortcuts can be changed in Settings.
+
+Uninstalling
+Use Installed apps in Windows Settings, or run Uninstall Mojinora.exe from the
+installation folder. Settings and recovery data are kept by default.
+Selecting “Also delete settings and recovery data (including unsaved documents
+and temporary images)” removes recovery data too. Save needed documents first.
+Saved documents and images are not deleted.
+
+Network access and data
+Normal document editing, saving, and recovery take place on your computer.
+The app does not automatically send usage analytics or crash reports.
+“Load images from remote URLs” is disabled by default. Enabling it connects to
+the image hosts specified in your document and shares connection information,
+such as your IP address, with those hosts.
+Opening an external link launches your default browser and connects to its destination.
+The download page uses no analytics, external fonts, contact forms, or cookies.
+The hosting server may record access logs according to its operator's policy.
+
+Terms and contact
+Free for personal and commercial use. Redistribution to third parties requires permission.
+The source code is not public. See LICENSE.txt for the full terms in Japanese and English.
+Third-party components retain their own licenses.
+Publisher: Mojinora. No public contact channel is currently provided.
