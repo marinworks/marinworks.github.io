@@ -1,4 +1,4 @@
-Mojinora 1.0.0 User Guide
+Mojinora 1.3.0 User Guide
 
 System requirements and installation
 Windows 11 / x64. No development tools, such as Node.js, are required.
@@ -16,7 +16,7 @@ Installation is for the current Windows user and requires no administrator privi
 File context menu and associations
 Open with Mojinora works with files of any extension, including extensionless files, but not folders.
 On Windows 11, it appears under Show more options in the file context menu.
-Multiple documents open as tabs in the existing window. Reopening a file preserves its unsaved edits.
+New files open in the most recently used window. A file already open activates its existing window and tab, preserving unsaved edits.
 Unsupported files and folders produce an explanation while other documents continue to open.
 Associations register Open with and default-app candidates only. Setup never changes current default apps.
 Fresh installations select Markdown (.md / .markdown / .mdown / .mkd) and text/logs (.txt / .text / .log).
@@ -30,7 +30,7 @@ Deselecting an extension removes its candidate entry without changing the select
 Uninstalling removes only Mojinora registrations, leaving other apps and user documents unchanged.
 
 Silent installation (no administrator privileges)
-Mojinora-Setup-1.0.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
+Mojinora-Setup-1.3.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
 /CONTEXTMENU=0 or 1 controls the context-menu entry.
 /ASSOCIATIONS=1 selects only .md / .markdown; 0 selects none.
 An explicit /EXTENSIONS list takes precedence. /EXTENSIONS="" selects none. Invalid values exit without changing registration.
@@ -61,14 +61,38 @@ Change the default under Settings > General > Text editing > Default document ty
 Files ending in .md, .markdown, .mdown, or .mkd open as Markdown; other text files use text editing.
 Ctrl+S saves and Ctrl+Z undoes. Keyboard shortcuts can be changed in Settings.
 
+Tabs and windows
+Right-click a tab to close other tabs, tabs to the left, tabs to the right, or all tabs. Close tabs to the left keeps the clicked tab and affects only its window. Cancelling an unsaved-document confirmation leaves all affected tabs open.
+When tabs overflow, use the left/right buttons to scroll. Tab List searches all tabs in the current window by filename or path. Use Up/Down and Enter to select, and Escape to close the list.
+Scroll up over a tab for the previous tab or down for the next; navigation wraps at both ends. Shift+wheel and horizontal gestures scroll the tab strip. Ctrl and other modifiers do not switch tabs.
+Drag within the strip to reorder tabs. Release outside the window to move a tab to a new window, or use Move to New Window in its context menu.
+Drop onto another window's tab strip to move to the indicated position. Drops on its editor area and Escape cancel the move.
+Moves retain unsaved text, Undo/Redo, encoding, selection and viewing position without saving the original file. Moving the last tab closes its source window.
+Settings are shared by all windows. Sidebar folders, split layout and search results belong to each window.
+
+Organize tabs and use the command palette
+Right-click a tab and choose Pin. Pinned tabs move to the left and are excluded from bulk-close commands. Pinned tabs cannot belong to a group.
+Choose one of eight colors or No color for a tab. Use Move to Group to create a manual group and move a tab into it.
+Rename, recolor, delete, collapse, or expand groups. New groups use blue by default; an individual tab color overrides its group's color. Collapsed tabs remain available in Tab List search; selecting one expands its group.
+Pinned state, individual and group colors, and collapsed state are retained when tabs are reordered or moved between windows and when a work session is restored.
+Press F1 or Ctrl+Alt+P to open the command palette. Search by command name, category, or shortcut in either Japanese or English. Unavailable commands are omitted. Use Up/Down and Enter to run a command, or Escape to close the palette.
+
+Local save history
+For documents with a save path, manual saves record the version before and after overwriting; a first save records the saved version. Automatic saves are excluded. Successful GREP replacements also record the before and after versions. Open Local History from the File menu or command palette to compare, restore, or delete versions.
+A restored version is treated as unsaved and can be reverted with one Undo. Automatic saving stays paused until you save manually. History retains original bytes, encoding, BOM and line endings. Keeping the work session on exit also preserves the restored version.
+History is retained for up to 30 days, 50 versions per file, and 500 MiB compressed in total. Older versions are removed when limits are reached. Turn off Record local save history in Settings to stop recording new versions; existing versions remain available for viewing, restoring, and deletion.
+Use Delete all local save history in Settings to remove history for every document after confirmation. Work-session recovery data is stored separately and is not affected. History contents are not included in settings exports.
+
 Exiting and restoring your session
+The close button and Alt+F4 close only their window. File > Quit closes all windows; cancelling leaves every window open.
+Keep session and exit on an individual window leaves a reservation for the next start. Reopening one of its files restores the retained content first.
 When closing the app with unsaved documents, one dialog lists the affected documents.
 Save all and exit saves each document, asking for a location for untitled documents.
 Keep session and exit leaves the original files unchanged, records the open tabs and unsaved content in the recovery area, and restores them automatically at the next start.
 Discard changes and exit does not retain unsaved edits. Cancel, a cancelled save, or a failed session write leaves the app open.
 The session includes tab order and the active tab, text, Undo/Redo history (up to 201 states), encoding/BOM/line endings, selections and scrolling, editing/preview modes, document-specific indentation and syntax, bookmarks, folds, split panes, and the sidebar folder and expanded nodes. Managed images needed by the history are retained too.
 Large logs are reopened at their recorded position, encoding and follow setting; the entire file is not copied. An unavailable log shows a Retry button in its tab.
-File > Restore last closed session replaces the current tabs after confirmation. Unsaved documents also prompt you to save or discard. Cancelling midway leaves all tabs open.
+File > Restore last closed session replaces all windows after confirmation. Unsaved documents also prompt you to save or discard. Cancelling midway leaves all tabs open. Window positions, sizes, maximized and full-screen states are also recorded.
 Other exit choices start with an empty document next time. The manual checkpoint excludes discarded untitled documents and discarded edits and history.
 The next normal exit replaces the checkpoint. Automatic restoration happens once; the checkpoint remains available for manual restoration.
 For ordinary documents, recorded text and history take precedence over files changed or deleted externally. Review the notification before loading the external version, overwriting, or using Save As.
@@ -121,17 +145,37 @@ Tab inserts a tab character or spaces to the next tab stop. With a selection it 
 Alt-drag creates a rectangular selection. Ctrl+D adds the next matching occurrence to the selection.
 Ctrl+F2 toggles a bookmark; F4 / Shift+F4 moves between bookmarks. Bookmarks last until the tab is closed.
 Ctrl+G goes to a line. Settings include wrapping, whitespace, font, tab size, and space indentation.
+In Settings > General > Text editing, configure each typing aid separately: inherit indentation on new lines, adjust indentation while typing, auto-close brackets and quotes, skip existing closing characters, delete paired characters together, and surround selected text. All are on by default. These aids apply to plain text and Markdown source editing, not Markdown formatted editing.
 The default body font is Consolas at 14px. You can change it in Settings. Updates preserve your saved font preferences.
 Hold Ctrl and scroll up/down over the editor to increase/decrease text zoom (50–200%). Zoom is shared across tabs for the current run and does not change the saved font size. Ctrl+Shift+0 (Actual size) resets it to 100%. Each launch starts at 100%.
 Ctrl+F / Ctrl+H opens search / replacement with regex, whole-word, and selection-only options.
 Regex replacements support $1, $2, and $<name>. Searches stop after 3 seconds and show up to 10,000 results.
+The toolbar also provides Format Document, Format XML Strictly, Validate Syntax, and Compact Document for supported JSON, JSONC, JSONL, XML, HTML, CSS, JavaScript, TypeScript, JSX, and TSX files. Compact is available for JSON and JSONL only. Operations run in the background, support cancellation, and can navigate to a syntax error location. The document size limit is 10 MiB.
+Formatting and compaction are manual commands; saving does not format automatically. Normal XML formatting preserves text and mixed content, while strict formatting preserves whitespace inside elements. JSON Lines remain one record per line. Processing stops after 15 seconds.
 
 Encoding and line endings
 Click the encoding indicator at the bottom right. Apply, then save the document.
-Supported encodings: UTF-8, UTF-16 LE/BE, CP932 (Shift_JIS), EUC-JP, and ISO-2022-JP.
+Supported encodings: UTF-8, UTF-16 LE/BE, CP932 (Shift_JIS), EUC-JP, ISO-2022-JP, and EBCDIC IBM 930/939/1390/1399/037/1047.
 If automatic detection is incorrect, save unsaved changes first, then use Reopen with encoding.
 Saving stops without changing the original file if characters cannot be represented in the selected encoding.
 Choose LF, CRLF, or CR. Mixed line endings are preserved at unchanged locations unless explicitly converted.
+
+EBCDIC files
+Normal Open, Open with Mojinora in the file context menu, and file drops estimate EBCDIC encodings. IBM 939 is preferred when candidates are ambiguous; a notification identifies the estimate. Detection cannot identify every file correctly.
+When a file has no line endings and appears to use fixed records, confirm its record format and length. The initial value of 80 bytes is a suggested input, not a detected record length. Choose Text with line endings to open a non-record file as one line. Cancel skips this file while continuing with other files in the batch.
+If text looks incorrect, use the notification or bottom-right encoding indicator to reopen it with its source CCSID. File > Open with Encoding lets you choose it before opening. An explicit encoding is never changed by detection.
+930/939/1390/1399 support Japanese text; 037/1047 support Latin text. Edit the decoded text normally; saving writes it back in the selected EBCDIC encoding.
+Text with line endings supports LF, CRLF, CR, and NEL (EBCDIC NL), retaining the selected line-ending format when saved.
+For fixed-length records, enter a record length of 1–65535 bytes. Each record becomes one editor line. Files whose size is not a multiple of the selected length are rejected.
+Saving pads short lines with EBCDIC spaces. Double-byte characters and SO/SI count toward the byte length. An oversized line stops the save and reports its line number and byte count.
+Editor line breaks separate records. Adding a final line break adds an empty record; no line-ending bytes are written to the fixed-record file.
+Use the bottom-right encoding indicator to change or reopen the encoding and record length. External reloads and work-session restoration retain them.
+Conversion tables are bundled; no Java installation or network connection is required. Binary numeric fields and variable records with RDW/BDW are not supported.
+Files over 50 MiB, or fixed records whose expanded text would exceed the 50 MiB editing budget, use the large read-only viewer.
+
+Whitespace and tab positions
+Whitespace display includes faint outlines for full-width spaces as well as space and Tab markers. Markers do not change saved text.
+Switching tabs retains each document's vertical and horizontal scroll positions, independently for both split panes.
 
 File drops and product information
 Drop one or more document files on the sidebar, tab bar, top bar, editor, or status bar to open them.
@@ -141,7 +185,10 @@ Help > About Mojinora displays the installed version.
 
 GREP search and replacement
 Use Ctrl+Shift+F for GREP search or Ctrl+Shift+H for GREP replacement.
+Conditions include the folder, search and replacement text, include/exclude patterns, search options, encoding and fixed-record settings. Save, update, load, or delete named conditions; the 20 most recent runs are also kept. They are shared across windows. Selecting a condition only fills the form and does not start a search. Clear recent history with Clear search history. Conditions and history are not included in settings exports.
 Enter a folder path or use Browse. The sidebar folder is not changed. Subfolder search is enabled by default.
+Current file folder selects the active document's parent folder. It is disabled for untitled documents.
+To search or replace EBCDIC, select its encoding and record format. Oversized fixed-record replacements are rejected; backups retain the original bytes.
 Separate include/exclude patterns with semicolons, for example *.txt;*.log or src/**/*.ts.
 Only saved files are included. Unsaved tabs, binary files, files over 50 MiB, symbolic links, and junctions are excluded.
 Results stay below the editor while you edit or switch tabs. Drag the panel edge to resize it; use its controls to edit conditions, search again, stop, or close.
@@ -155,7 +202,7 @@ Folder replacement cannot be undone using document Undo. To restore, close the a
 
 Split and compare
 In text editing, Ctrl+\ splits the same document into two views sharing edits and Undo history.
-Compare files shows another tab in a read-only comparison. Each document must be no larger than 10 MiB.
+Compare files can use another tab's current content, the current file's saved version, or a selected file as the source. The source is read-only and the current document remains editable. Each difference can be applied with one Undo; automatic saving is paused until a manual save. Navigate between differences, view the count, and use synchronized scrolling (on by default). The display can ignore trailing whitespace or all spaces and tabs; applying a difference still uses the original text. Encoding, BOM and line-ending differences are shown separately. Each document must be no larger than 10 MiB.
 
 Recorded macros
 Press F9 in text editing to start recording, perform typing and editing commands, and press F9 again to stop. F8 replays.

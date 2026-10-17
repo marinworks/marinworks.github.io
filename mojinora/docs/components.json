@@ -1,6 +1,11 @@
 {
-  "version": "1.0.0",
+  "version": "1.3.0",
   "components": [
+    {
+      "name": "Unicode ICU EBCDIC mapping tables",
+      "version": "77.1",
+      "license": "Unicode-3.0"
+    },
     {
       "name": "@braintree/sanitize-url",
       "version": "7.1.2",
@@ -9,7 +14,7 @@
     },
     {
       "name": "@codemirror/autocomplete",
-      "version": "6.20.3",
+      "version": "6.18.7",
       "license": "MIT",
       "noticesSha256": "05c6130cda97e7600ca91427a41e8a065efcf82365fc0293e7de80faec494c07"
     },
@@ -386,6 +391,12 @@
       "noticesSha256": "6342baaa447cb6d0e84be677e26f07eb30de3eab88ae26ae99989062797cbc5d"
     },
     {
+      "name": "@prettier/plugin-xml",
+      "version": "3.4.2",
+      "license": "MIT",
+      "noticesSha256": "a9e5631b7af03f7cde54acfc4304ba40316c8226e01acd7fbabe2ad0ca2cceb1"
+    },
+    {
       "name": "@ungap/structured-clone",
       "version": "1.4.0",
       "license": "ISC",
@@ -396,6 +407,12 @@
       "version": "2.0.0",
       "license": "MIT",
       "noticesSha256": "6a3508febf2cfccfee96597394543a6154a4bb0b1f91f28404be42c09e9fcb54"
+    },
+    {
+      "name": "@xml-tools/parser",
+      "version": "1.0.12",
+      "license": "Apache-2.0",
+      "noticesSha256": "00486ef83838a313a30b3f7c2c999149a4614102a906ae9b600eac7c58b07b87"
     },
     {
       "name": "bail",
@@ -426,6 +443,12 @@
       "version": "3.0.0",
       "license": "MIT",
       "noticesSha256": "63cb98b3f6abfb3c3592c16f88253c1bdc834087bf52671e8ce5609e4eb693cf"
+    },
+    {
+      "name": "chevrotain",
+      "version": "7.1.1",
+      "license": "Apache-2.0",
+      "noticesSha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     {
       "name": "chokidar",
@@ -1052,6 +1075,12 @@
       "noticesSha256": "869c30f368eb08735e779027b9f4bc9fea2f39624351856aebe42741f0bc0884"
     },
     {
+      "name": "prettier",
+      "version": "3.6.2",
+      "license": "MIT",
+      "noticesSha256": "b0f2417199889f1c0d28ec4e0244eacf1a15de5819d61f641dd7d8f45153ac9c"
+    },
+    {
       "name": "property-information",
       "version": "7.2.0",
       "license": "MIT",
@@ -1146,6 +1175,12 @@
       "version": "5.1.1",
       "license": "MIT",
       "noticesSha256": "dffec71d93f273d2af7b54c6c7e7e70b3289c632ec0d7253210ec21ac336d5ac"
+    },
+    {
+      "name": "regexp-to-ast",
+      "version": "0.5.0",
+      "license": "MIT",
+      "noticesSha256": "ffdfd706a54ae16965504e916e4e236bc76bcd1573c6f88045daec6c1fed64c5"
     },
     {
       "name": "rehype-stringify",
