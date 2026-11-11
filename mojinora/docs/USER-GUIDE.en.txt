@@ -1,4 +1,4 @@
-Mojinora 1.4.0 User Guide
+Mojinora 1.6.0 User Guide
 
 System requirements and installation
 Windows 11 / x64. No development tools, such as Node.js, are required.
@@ -30,7 +30,7 @@ Deselecting an extension removes its candidate entry without changing the select
 Uninstalling removes only Mojinora registrations, leaving other apps and user documents unchanged.
 
 Silent installation (no administrator privileges)
-Mojinora-Setup-1.5.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
+Mojinora-Setup-1.6.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
 /CONTEXTMENU=0 or 1 controls the context-menu entry.
 /ASSOCIATIONS=1 selects only .md / .markdown; 0 selects none.
 An explicit /EXTENSIONS list takes precedence. /EXTENSIONS="" selects none. Invalid values exit without changing registration.
@@ -77,7 +77,17 @@ Rename, recolor, delete, collapse, or expand groups. New groups use blue by defa
 Pinned state, individual and group colors, and collapsed state are retained when tabs are reordered or moved between windows and when a work session is restored.
 Press F1 or Ctrl+Alt+P to open the command palette. Search by command name, category, or shortcut in either Japanese or English. Unavailable commands are omitted. Use Up/Down and Enter to run a command, or Escape to close the palette.
 
+Recent files
+Press Ctrl+P to open Quick Open. Recently opened files appear at the top. By default, Mojinora remembers the names and paths of up to 50 files. Use Settings → General → Recent files to turn off recording and display or to clear the list. This list is separate from saved file versions.
+Select a result and choose Add to favorites to keep up to 50 files at the top of the list. Clearing recent files leaves favorites available. Choose Remove from favorites to remove a file from the list.
+
+External changes and whitespace
+When an external change notice appears, choose Compare with external version to view your edits alongside the latest version on disk.
+In text and Markdown source editing, the Whitespace button shows spaces, tabs, trailing whitespace, and line endings. The symbols are ↓ for LF, ↵ for CRLF, ← for CR, and ⇣ for NEL. Hover over a symbol to see its line-ending code. Mixed endings appear as ↕ while there are unsaved edits. Fixed-length record boundaries have no line-ending marker.
+
 Local save history
+Use File → Browse All File History… to find versions of closed or deleted files. Select a version to view its contents, then choose Recover selected version to a file… and pick a destination. Recovery does not overwrite existing files.
+If a file has at least two saved versions, select both in the history archive and choose Compare saved versions to view their differences in a read-only comparison.
 For documents with a save path, manual saves record the version before and after overwriting; a first save records the saved version. Automatic saves are excluded. Successful GREP replacements also record the before and after versions. Open Local History from the File menu or command palette to compare, restore, or delete versions.
 A restored version is treated as unsaved and can be reverted with one Undo. Automatic saving stays paused until you save manually. History retains original bytes, encoding, BOM and line endings. Keeping the work session on exit also preserves the restored version.
 History is retained for up to 30 days, 50 versions per file, and 500 MiB compressed in total. Older versions are removed when limits are reached. Turn off Record local save history in Settings to stop recording new versions; existing versions remain available for viewing, restoring, and deletion.
