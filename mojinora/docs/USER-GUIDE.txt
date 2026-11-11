@@ -31,7 +31,7 @@ Windows 11では、右クリックの「その他のオプションを確認」�
 アンインストールではMojinoraの登録だけを除き、他のアプリの登録や文書は変更しません。
 
 サイレント導入（管理者権限不要）
-Mojinora-Setup-1.4.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
+Mojinora-Setup-1.5.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
 /CONTEXTMENU=0 または 1 で右クリック項目を切り替えます。
 /ASSOCIATIONS=1 は .md / .markdown、0 は未選択を意味します。
 /EXTENSIONS の明示指定を優先します。/EXTENSIONS="" は未選択です。無効な値では登録を変更せず終了します。

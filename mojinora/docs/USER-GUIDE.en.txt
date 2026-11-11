@@ -30,7 +30,7 @@ Deselecting an extension removes its candidate entry without changing the select
 Uninstalling removes only Mojinora registrations, leaving other apps and user documents unchanged.
 
 Silent installation (no administrator privileges)
-Mojinora-Setup-1.4.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
+Mojinora-Setup-1.5.0-x64.exe /S /currentuser /CONTEXTMENU=1 /EXTENSIONS=".md;.txt"
 /CONTEXTMENU=0 or 1 controls the context-menu entry.
 /ASSOCIATIONS=1 selects only .md / .markdown; 0 selects none.
 An explicit /EXTENSIONS list takes precedence. /EXTENSIONS="" selects none. Invalid values exit without changing registration.
